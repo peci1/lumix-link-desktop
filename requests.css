@@ -1,0 +1,161 @@
+div {	
+	text-align:center; 
+	background-color:#013259;
+	color:#FFFFFF;
+	}
+
+table {
+	background-color:#013259;
+	color:#FFFFFF;
+	position:left;
+  }
+
+	
+#getset {
+	color: #FFF;
+	float:left;
+}
+
+#right {
+	color: #FFF;
+}
+	
+#action {
+	color: #FFF;
+	float:right;
+	padding-right:70;
+}
+
+#stream {
+	color: #FFF;
+	float:right;
+	padding-right:80;
+}
+#getsettings {
+	color: #FFF;
+}	
+
+#setsettings {
+	color: #FFF;
+}
+
+#Focus {
+	float:right;
+}
+
+#zoom {
+	float:right;
+}
+
+#clicker1 {
+	float:left;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+#clicker2 {
+	float:left;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+#clicker3 {
+	float:left;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+#clicker4 {
+	float:left;
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+#zclicker1 {
+	float:left;
+    width: 50px;
+    height: 50px;
+    margin:20px;
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+#zclicker2 {
+	float:left;
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+#zclicker3 {
+	float:left;
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+
+#zclicker4 {
+	float:left;
+    width: 50px;
+    height: 50px;
+    margin: 20px;
+    
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}
+#cclicker {
+	float:center;
+    width: 50px;
+    height: 50px;
+    margin-left: 160px;
+    
+    background: white;
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+}

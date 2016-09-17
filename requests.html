@@ -1,0 +1,759 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="requests.css">
+<SCRIPT language="javascript" src="jquery.js"></SCRIPT>
+<script>
+    function onload() {
+        forms = document.getElementsByTagName('form'); 
+        for (i = 0; i < forms.length; i++) {
+            forms[i].action = 'http://' + window.cameraIp + '/cam.cgi';
+        }
+    }
+</script>
+</head>
+
+<body bgcolor="#013259" onload="onload()">
+<div id="header">
+<script>
+    window.cameraIp = null;
+
+    uri = window.parent.location.href.split("?");
+    if (uri.length > 1) {
+        queryString = uri[1];
+        parameters = queryString.split("&");
+        for (i=0; i < parameters.length; i++) {
+            keyVal = parameters[i].split("=");
+            if (keyVal[0] == "ip") {
+                window.cameraIp = keyVal[1];
+                break;
+            }
+        }
+    }
+
+    if (window.cameraIp == null) {
+        window.cameraIp = prompt("Enter the IP address of the camera");    
+    }
+</script>
+<script>
+	function keepAlive()
+	{
+		window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=recmode', 'hidden');
+		window.open('http://' + window.cameraIp + '/cam.cgi?mode=startstream&value=49199', 'results');
+		streamtimer = setInterval( function(){ 
+			window.open('http://' + window.cameraIp + '/cam.cgi?mode=getstate', 'hidden');
+		}, 10000 );
+	}
+	keepAlive();
+</script>
+<b>Panasonic Lumix Web Remote Control</b>
+</div>
+
+<div id="getset">
+<div id="getsettings">
+<b>Get...</b>
+<br>
+<TABLE>
+<FORM method=get action="http://192.168.0.1/cam.cgi" target="_blank">
+<TR>	
+<TD>GetSettings</TD>
+	<TD>
+	<input name="mode" value="getsetting" type="hidden">
+	<SELECT name="type">
+		<OPTION VALUE="afmode">afmode</OPTION>
+		<OPTION VALUE="focusmode">focusmode</OPTION>
+		<OPTION VALUE="mf_asst">mf_asst</OPTION>
+		<OPTION VALUE="mf_asst_mag">mf_asst_mag</OPTION>
+		<OPTION VALUE="ex_tele_conv">ex_tele_conv</OPTION>
+		<OPTION VALUE="colormode">colormode</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+<FORM method=get action="http://192.168.0.1/cam.cgi" target="_blank">
+<TR>	
+<TD>GetInfo</TD>
+	<TD>
+	<input name="mode" value="getinfo" type="hidden">
+	<SELECT name="type">
+		<OPTION VALUE="capability">capability</OPTION>
+		<OPTION VALUE="allmenu">allmenu</OPTION>
+		<OPTION VALUE="curmenu">curmenu</OPTION>
+		<OPTION VALUE="lens">lens</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+</TABLE>
+</div>
+<div id="setsettings">
+<br>
+<b>Set...</b>
+<br>
+<TABLE>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Shutter Speed</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="shtrspeed" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="3072/256">4000 </OPTION>
+		<OPTION VALUE="2987/256">3200 </OPTION>
+		<OPTION VALUE="2902/256">2500 </OPTION>
+		<OPTION VALUE="2816/256">2000 </OPTION>
+		<OPTION VALUE="2731/256">1600 </OPTION>
+		<OPTION VALUE="2646/256">1300 </OPTION>
+		<OPTION VALUE="2560/256">1000 </OPTION>
+		<OPTION VALUE="2475/256">800 </OPTION>
+		<OPTION VALUE="2390/256">640 </OPTION>
+		<OPTION VALUE="2304/256">500 </OPTION>
+		<OPTION VALUE="2219/256">400 </OPTION>
+		<OPTION VALUE="2134/256">320 </OPTION>
+		<OPTION VALUE="2048/256">250 </OPTION>
+		<OPTION VALUE="1963/256">200 </OPTION>
+		<OPTION VALUE="1878/256">160 </OPTION>
+		<OPTION VALUE="1792/256">125 </OPTION>
+		<OPTION VALUE="1707/256">100 </OPTION>
+		<OPTION VALUE="1622/256">80 </OPTION>
+		<OPTION VALUE="1536/256">60 </OPTION>
+		<OPTION VALUE="1451/256">50 </OPTION>
+		<OPTION VALUE="1366/256">40 </OPTION>
+		<OPTION VALUE="1280/256">30 </OPTION>
+		<OPTION VALUE="1195/256">25 </OPTION>
+		<OPTION VALUE="1110/256">20 </OPTION>
+		<OPTION VALUE="1024/256">15 </OPTION>
+		<OPTION VALUE="939/256">13 </OPTION>
+		<OPTION VALUE="854/256">10 </OPTION>
+		<OPTION VALUE="768/256">8 </OPTION>
+		<OPTION VALUE="683/256">6 </OPTION>
+		<OPTION VALUE="598/256">5 </OPTION>
+		<OPTION VALUE="512/256">4 </OPTION>
+		<OPTION VALUE="427/256">3.2 </OPTION>
+		<OPTION VALUE="342/256">2.5 </OPTION>
+		<OPTION VALUE="256/256">2 </OPTION>
+		<OPTION VALUE="171/256">1.6 </OPTION>
+		<OPTION VALUE="86/256">1.3 </OPTION>
+		<OPTION VALUE="0/256">1 </OPTION>
+		<OPTION VALUE="-85/256">1.3s </OPTION>
+		<OPTION VALUE="-170/256">1.6s </OPTION>
+		<OPTION VALUE="-256/256">2s </OPTION>
+		<OPTION VALUE="-341/256">2.5s </OPTION>
+		<OPTION VALUE="-426/256">3.2s </OPTION>
+		<OPTION VALUE="-512/256">4s </OPTION>
+		<OPTION VALUE="-682/256">5s </OPTION>
+		<OPTION VALUE="-768/256">6s </OPTION>
+		<OPTION VALUE="-853/256">8s </OPTION>
+		<OPTION VALUE="-938/256">10s </OPTION>
+		<OPTION VALUE="-1024/256">13s </OPTION>
+		<OPTION VALUE="-1109/256">15s </OPTION>
+		<OPTION VALUE="-1194/256">20s </OPTION>
+		<OPTION VALUE="-1280/256">25s </OPTION>
+		<OPTION VALUE="-1365/256">30s </OPTION>
+		<OPTION VALUE="-1450/256">40s</OPTION>
+		<OPTION VALUE="-1536/256">50s</OPTION>
+		<OPTION VALUE="16384/256">60s</OPTION>
+		<OPTION VALUE="256/256">B</OPTION>		
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Focal</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="focal" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="392/256">1.7</OPTION>
+		<OPTION VALUE="427/256">1.8</OPTION>
+		<OPTION VALUE="512/256">2</OPTION>
+		<OPTION VALUE="598/256">2.2</OPTION>
+		<OPTION VALUE="683/256">2.5</OPTION>
+		<OPTION VALUE="768/256">2.8</OPTION>
+		<OPTION VALUE="854/256">3.2</OPTION>
+		<OPTION VALUE="938/256">3.5</OPTION>
+		<OPTION VALUE="1024/256">4</OPTION>
+		<OPTION VALUE="1110/256">4.5</OPTION>
+		<OPTION VALUE="1195/256">5</OPTION>
+		<OPTION VALUE="1280/256">5.6</OPTION>
+		<OPTION VALUE="1366/256">6.3</OPTION>
+		<OPTION VALUE="1451/256">7.1</OPTION>
+		<OPTION VALUE="1536/256">8</OPTION>
+		<OPTION VALUE="1622/256">9</OPTION>
+		<OPTION VALUE="1707/256">10</OPTION>
+		<OPTION VALUE="1792/256">11</OPTION>
+		<OPTION VALUE="1878/256">13</OPTION>
+		<OPTION VALUE="1963/256">14</OPTION>
+		<OPTION VALUE="2048/256">16</OPTION>
+		</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>ISO</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="iso" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="200">200</OPTION>
+		<OPTION VALUE="400">400</OPTION>
+		<OPTION VALUE="800">800</OPTION>
+		<OPTION VALUE="1600">1600</OPTION>
+		<OPTION VALUE="3200">3200</OPTION>
+		<OPTION VALUE="6400">6400</OPTION>
+		<OPTION VALUE="12800">12800</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>AF Mode</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="afmode" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="aftracking">aftracking</OPTION>
+		<OPTION VALUE="1area">1area</OPTION>
+		<OPTION VALUE="pinpoint">pinpoint</OPTION>
+		<OPTION VALUE="facedetection">facedetection</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Lightmetering</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="lightmetering" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="center">center</OPTION>
+		<OPTION VALUE="spot">spot</OPTION>
+		<OPTION VALUE="multi">multi</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Color Mode</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="colormode" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="vivid">vivid</OPTION>
+		<OPTION VALUE="natural">natural</OPTION>
+		<OPTION VALUE="bw">bw</OPTION>
+		<OPTION VALUE="scenery">scenery</OPTION>
+		<OPTION VALUE="portrait">portrait</OPTION>
+		<OPTION VALUE="custom">custom</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Aspect Ratio</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="aspectratio" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="4:3">4:3</OPTION>
+		<OPTION VALUE="3:2">3:2</OPTION>
+		<OPTION VALUE="1:1">1:1</OPTION>
+		<OPTION VALUE="16:9">16:9</OPTION>
+
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Picture Size</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="pictsize" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="16m">16</OPTION>
+		<OPTION VALUE="8m">8</OPTION>
+		<OPTION VALUE="4m">4</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Picture Quality</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="quality" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="fine">fine</OPTION>
+		<OPTION VALUE="standard">standard</OPTION>
+		<OPTION VALUE="raw_fine">raw_fine</OPTION>
+		<OPTION VALUE="raw_standard">raw_standard</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Video Quality</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="videoquality" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="mov_24p_50mbps">mov_24p_50mbps</OPTION>
+		<OPTION VALUE="mov_24p_72mbps">mov_24p_72mbps</OPTION>
+		<OPTION VALUE="mov_30p_50mbps">mov_30p_50mbps</OPTION>
+		<OPTION VALUE="mov_30p_72mbps">mov_30p_72mbps</OPTION>
+		<OPTION VALUE="mov_60p_50mbps">mov_60p_50mbps</OPTION>
+		<OPTION VALUE="mov_60p_72mbps">mov_60p_72mbps</OPTION>		
+		<OPTION VALUE="mp4_30p_4mbps">mp4_30p_4mbps</OPTION>
+		<OPTION VALUE="mp4_30p_10mbps">mp4_30p_10mbps</OPTION>
+		<OPTION VALUE="mp4_30p_20mbps">mp4_30p_20mbps</OPTION>
+		<OPTION VALUE="avchd_24p_24mbps">avchd_24p_24mbps</OPTION>
+		<OPTION VALUE="avchd_30p_24mbps">avchd_30p_24mbps</OPTION>
+		<OPTION VALUE="avchd_60p_28mbps">avchd_60p_28mbps</OPTION>
+		<OPTION VALUE="avchd_60i_17mbps">avchd_60i_17mbps</OPTION>
+	</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Video Rectime</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="videorectime" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="30">30</OPTION>
+		<OPTION VALUE="60">60</OPTION>
+		<OPTION VALUE="90">90</OPTION>
+		<OPTION VALUE="120">120</OPTION>
+		<OPTION VALUE="180">180</OPTION>
+		<OPTION VALUE="240">240</OPTION>		
+		<OPTION VALUE="300">300</OPTION>
+		<OPTION VALUE="600">600</OPTION>
+		<OPTION VALUE="1200">1200</OPTION>
+		<OPTION VALUE="1800">1800</OPTION>
+		<OPTION VALUE="2400">2400</OPTION>
+</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>White balance</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="whitebalance" type="hidden">
+	<SELECT name="value">
+		<OPTION VALUE="auto">auto</OPTION>
+		<OPTION VALUE="daylight">daylight</OPTION>
+		<OPTION VALUE="cloudy">cloudy</OPTION>
+		<OPTION VALUE="shade">shade</OPTION>
+		<OPTION VALUE="halogen">halogen</OPTION>
+		<OPTION VALUE="flash">flash</OPTION>		
+		<OPTION VALUE="white_set1">white_set1</OPTION>
+		<OPTION VALUE="white_set2">white_set2</OPTION>
+		<OPTION VALUE="white_set3">white_set3</OPTION>
+		<OPTION VALUE="white_set4">white_set4</OPTION>
+		<OPTION VALUE="color_temp">color_temp</OPTION>
+</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+ <FORM method=get action="http://192.168.0.1/cam.cgi" target="results">
+<TR>
+ <TD>Color Temp</TD>
+	<TD>
+	<input name="mode" value="setsetting" type="hidden">
+	<input name="type" value="whitebalance" type="hidden">
+	<input name="value" value="color_temp" type="hidden">
+	
+	<SELECT name="value2">
+		<OPTION VALUE="2500">2500</OPTION>
+		<OPTION VALUE="3000">3000</OPTION>
+		<OPTION VALUE="3500">3500</OPTION>
+		<OPTION VALUE="4000">4000</OPTION>
+		<OPTION VALUE="4500">4500</OPTION>
+		<OPTION VALUE="5000">5000</OPTION>		
+		<OPTION VALUE="5500">5500</OPTION>
+		<OPTION VALUE="6000">6000</OPTION>
+		<OPTION VALUE="6500">6500</OPTION>
+		<OPTION VALUE="7000">7000</OPTION>
+		<OPTION VALUE="7500">7500</OPTION>
+		<OPTION VALUE="8000">8000</OPTION>
+		<OPTION VALUE="8500">8500</OPTION>
+		<OPTION VALUE="9000">9000</OPTION>
+		<OPTION VALUE="9500">9500</OPTION>
+		<OPTION VALUE="10000">10000</OPTION>
+</SELECT>
+	</TD>
+		<TD COLSPAN=2>
+	<INPUT type="submit" value="submit">
+	</TD>
+</TR>
+</FORM>
+</TABLE>
+</div>
+</div>
+<div id="right">
+<div id="Action">
+<b>Action</b>
+<br>
+<table>
+<TR>
+<TD><input leftmargin="100" type="button" name="init" value="recmode" onclick="window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=recmode', 'results')" style="background-color:#FFFFFF" style="color:white; font-weight:bold"onclick> 
+</TD><TD><input leftmargin="100" type="button" name="init" value="playmode" onclick="window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=playmode', 'results')" style="background-color:#FFFFFF" style="color:white; font-weight:bold"onclick> 
+</TD><TD><input leftmargin="100" type="button" name="init" value="record" onclick="window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=video_recstart', 'results')" style="background-color:#FFFFFF" style="color:white; font-weight:bold"onclick> 
+</TD></TR>
+</table>
+<br>
+</div>
+<div id="Focus">
+<b>Manual Focus</b><br>(press and hold)<br>
+<br>
+<div id="focusint">
+intervals (in ms) between 2 succesive <br>focus actions (avoid value smaller than 100) :
+	<FORM name="focusinterval">
+	<INPUT type="text" name="intervalwf" value="400" style="width:50;margin-left:20;margin-right:18">
+	<INPUT type="text" name="intervalws" value="200" style="width:50;margin-left:18;margin-right:18">
+	<INPUT type="text" name="intervalts" value="200" style="width:50;margin-left:18;margin-right:18">
+	<INPUT type="text" name="intervaltf" value="400" style="width:50;margin-left:18;margin-right:20">
+	</FORM>
+</div>
+	<div id="clicker1"><br>WIDE<br>FAST
+	<script>
+	var timeout1, clicker1 = $('#clicker1');
+	
+	clicker1.mousedown(function(){
+		this.style.background='grey';
+        window.open('http://' + window.cameraIp + '/cam.cgi?mode=camctrl&type=focus&value=wide-fast', 'results');
+		timeout1 = setInterval(function(){
+         window.open('http://' + window.cameraIp + '/cam.cgi?mode=camctrl&type=focus&value=wide-fast', 'results');
+		}, ((document.forms["focusinterval"].elements["intervalwf"].value)));
+		return false;
+	});
+
+	clicker1.mouseup(function(){
+	this.style.background='white';
+    clearInterval(timeout1);
+    return false;
+	});
+
+	clicker1.mouseout(function(){
+	this.style.background='white';
+    clearInterval(timeout1);
+    return false;
+	});
+
+	</script>
+	</div>
+	<div id="clicker2"><br>WIDE<br>SLOW
+	<script>
+	var timeout2, clicker2 = $('#clicker2');
+	
+	clicker2.mousedown(function(){
+		this.style.background='grey';
+        window.open('http://' + window.cameraIp + '/cam.cgi?mode=camctrl&type=focus&value=wide-normal', 'results');
+		timeout2 = setInterval(function(){
+         window.open('http://' + window.cameraIp + '/cam.cgi?mode=camctrl&type=focus&value=wide-normal', 'results');
+		}, (document.forms["focusinterval"].elements["intervalws"].value));
+		return false;
+	});
+
+	clicker2.mouseup(function(){
+	this.style.background='white';
+    clearInterval(timeout2);
+    return false;
+	});
+
+	clicker2.mouseout(function(){
+	this.style.background='white';
+    clearInterval(timeout2);
+    return false;
+	});
+
+	</script>
+	</div>
+	<div id="clicker3"><br>TELE<br>SLOW
+		<script>
+	var timeout3, clicker3 = $('#clicker3');
+	
+	clicker3.mousedown(function(){
+		this.style.background='grey';
+        window.open('http://' + window.cameraIp + '/cam.cgi?mode=camctrl&type=focus&value=tele-normal', 'results');
+		timeout3 = setInterval(function(){
+         window.open('http://' + window.cameraIp + '/cam.cgi?mode=camctrl&type=focus&value=tele-normal', 'results');
+		}, (document.forms["focusinterval"].elements["intervalts"].value));
+		return false;
+	});
+
+	clicker3.mouseup(function(){
+	this.style.background='white';
+    clearInterval(timeout3);
+    return false;
+	});
+
+	clicker3.mouseout(function(){
+	this.style.background='white';
+    clearInterval(timeout3);
+    return false;
+	});
+
+	</script>
+	</div>	
+	<div id="clicker4"><br>TELE<br>FAST
+	
+		<script>
+	var timeout4, clicker4 = $('#clicker4');
+	
+	clicker4.mousedown(function(){
+		this.style.background='grey';
+        window.open('http://' + window.cameraIp + '/cam.cgi?mode=camctrl&type=focus&value=tele-fast', 'results');
+		timeout4 = setInterval(function(){
+         window.open('http://' + window.cameraIp + '/cam.cgi?mode=camctrl&type=focus&value=tele-fast', 'results');
+		}, (document.forms["focusinterval"].elements["intervaltf"].value));
+		return false;
+	});
+
+	clicker4.mouseup(function(){
+	this.style.background='white';
+    clearInterval(timeout4);
+    return false;
+	});
+
+	clicker4.mouseout(function(){
+	this.style.background='white';
+    clearInterval(timeout4);
+    return false;
+	});
+
+	</script>
+	</div>
+<br>
+</div>
+<div id="Zoom">
+<br>
+<b>Zoom</b><br>(press and hold)<br>
+<div id="zclicker1"><br>WIDE<br>FAST
+	<script>
+	var zclicker1 = $('#zclicker1');
+	var mousedoz1 = false;
+	zclicker1.mousedown(function(){
+		this.style.background='grey';
+        window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=wide-fast', 'results');
+		mousedoz1 = true;
+		return false;
+	});
+
+	zclicker1.mouseup(function(){
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=zoomstop', 'results');
+	this.style.background='white';
+	mousedoz1 = false;
+    return false;
+	});
+
+	zclicker1.mouseout(function(){
+	if (mousedoz1 == true) {
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=zoomstop', 'results');
+	this.style.background='white';
+	}
+    return false;
+	});
+	</script>
+	</div>
+	<div id="zclicker2"><br>WIDE<br>SLOW
+	<script>
+	var zclicker2 = $('#zclicker2');
+	var mousedoz2 = false;
+	zclicker2.mousedown(function(){
+		this.style.background='grey';
+        window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=wide-normal', 'results');
+		mousedoz2 = true;
+		return false;
+	});
+
+	zclicker2.mouseup(function(){
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=zoomstop', 'results');
+	this.style.background='white';
+	mousedoz2 = false;
+    return false;
+	});
+	
+	zclicker2.mouseout(function(){
+	if (mousedoz2 == true) {
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=zoomstop', 'results');
+	this.style.background='white';
+	}
+    return false;
+	});
+
+
+	</script>
+	</div>
+	<div id="zclicker3"><br>TELE<br>SLOW</div>
+	
+		<script>
+	var ztimeout3, zclicker3 = $('#zclicker3');
+	var mousedoz3 = false;
+	zclicker3.mousedown(function(){
+    window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=tele-normal', 'results');
+	this.style.background='grey';
+	mousedoz3 = true;
+	return false;
+	});
+
+	zclicker3.mouseup(function(){
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=zoomstop', 'results');
+	this.style.background='white';
+	mousedoz3 = false;
+    return false;
+	});
+
+	zclicker3.mouseout(function(){
+	if (mousedoz3 == true) {
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=zoomstop', 'results');
+	this.style.background='white';
+	}
+    return false;
+	});
+
+	</script>
+	
+	<div id="zclicker4"><br>TELE<br>FAST
+	
+		<script>
+	var zclicker4 = $('#zclicker4');
+	var mousedoz4 = false;
+	zclicker4.mousedown(function(){
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=tele-fast', 'results');
+	this.style.background='grey';
+	mousedoz4 = true;
+	return false;
+	});
+
+	zclicker4.mouseup(function(){
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=zoomstop', 'results');
+	this.style.background='white';
+	mousedoz4 = false;
+    return false;
+	});
+
+	zclicker4.mouseout(function(){
+	if (mousedoz4 == true) {
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=zoomstop', 'results');
+	this.style.background='white';
+	}
+    return false;
+	});
+
+	</script>
+</div>
+<div capture>
+<br>
+<b>(Continuous) Shooting</b><br>(press and hold)<br><br>
+<div id="cclicker">SHOOT<br>SHOOT<br>SHOOT<br>...
+	<script>
+	var cclicker = $('#cclicker');
+	var mousedoc = false;
+	cclicker.mousedown(function(){
+		this.style.background='grey';
+        window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=capture', 'results');
+		mousedoc = true;
+		return false;
+	});
+
+	cclicker.mouseup(function(){
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=capture_cancel', 'results');
+	this.style.background='white';
+	mousedoc = false;
+    return false;
+	});
+
+	cclicker.mouseout(function(){
+	if (mousedoc == true) {
+	window.open('http://' + window.cameraIp + '/cam.cgi?mode=camcmd&value=capture_cancel', 'results');
+	this.style.background='white';
+	}
+    return false;
+	});
+	</script>
+</div>
+<script>
+	function startStream()
+	{
+		window.open('http://' + window.cameraIp + '/cam.cgi?mode=startstream&value=49199', 'results');
+		streamtimer = setInterval( function(){ 
+			window.open('http://' + window.cameraIp + '/cam.cgi?mode=startstream&value=49199', 'results');
+		}, 10000 );
+	}
+	
+	function stopStream()
+	{
+		clearInterval( streamtimer );
+		window.open( 'http://' + window.cameraIp + '/cam.cgi?mode=stopstream', 'results' );
+	}
+</script>
+<div id="Stream">
+<br>
+<b>Stream</b>
+<br>
+<table>
+<TR>
+<TD><input leftmargin="100" type="button" name="init" value="StartStream" onclick="window.open('http://' + window.cameraIp + '/cam.cgi?mode=startstream&value=49199', 'results')" style="background-color:#FFFFFF" style="color:white; font-weight:bold"onclick> 
+</TD><TD><input leftmargin="100" type="button" name="init" value="StopStream" onclick="window.open('http://' + window.cameraIp + '/cam.cgi?mode=stopstream', 'results')" style="background-color:#FFFFFF" style="color:white; font-weight:bold"onclick> 
+</TD></TR>
+</table>
+<br>
+</div>
+</div>
+</div>
+</body>
+</html>
