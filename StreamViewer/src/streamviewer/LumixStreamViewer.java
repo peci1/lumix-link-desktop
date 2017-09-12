@@ -199,10 +199,10 @@ public class LumixStreamViewer extends JPanel {
         String cameraIp;
         int cameraNetMaskBitSize = 24;
         
-        if (args.length == 3) {
-            cameraIp = args[1];           
+        if (args.length == 2) {
+            cameraIp = args[0];           
             try {
-                cameraNetMaskBitSize = Integer.parseInt(args[2]);
+                cameraNetMaskBitSize = Integer.parseInt(args[1]);
             } catch (NumberFormatException e) {
                 System.err.println(e);
             }
