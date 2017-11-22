@@ -11,7 +11,7 @@ import javax.swing.JFrame;
  * An improved version of the Panasonic Lumix camera desktop stream viewer. Based upon the work published at:
  * http://www.personal-view.com/talks/discussion/6703/control-your-gh3-from-a-web-browser-now-with-video-/p1
  *
- * @author personal-view.com
+ * @author lenuisible
  * @author Martin Pecka, Azzurite
  * @version 3.0.0
  */
