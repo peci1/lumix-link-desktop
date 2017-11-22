@@ -1,4 +1,4 @@
-rem Usage: 
+rem Usage: Control.bat [browser [camera_ip [camera_ip_mask]]] 
 rem     Control.bat (opens the page in Internet Explorer, asks for IP address and network mask of the camera)
 rem     Control.bat firefox (opens the page in firefox, asks for IP address and network mask of the camera)
 rem     Control.bat firefox 192.168.0.1 (opens the page in firefox, doesn't ask for anything, assumes network mask /24)

@@ -1,3 +1,14 @@
+# 3.0.0 (2017-11-22) #
+
+- Refactoring by Azzurite
+    - control.bat now takes up to three command-line arguments
+        1. web browser to use to open the webpage
+        1. IP address of the camera
+        1. IP mask of the camera
+        
+        all of the arguments are optional
+    - Threaded execution        
+
 # 2.0.0 (2016-09-18) #
 
 - The first version of peci1's fork.
