@@ -1,3 +1,7 @@
+# 3.1.0 (2018-01-11) #
+
+- Added button to stop recording.
+
 # 3.0.0 (2017-11-22) #
 
 - Refactoring by Azzurite
