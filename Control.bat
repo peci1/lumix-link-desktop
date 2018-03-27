@@ -1,3 +1,5 @@
+@echo off
+
 rem Usage: Control.bat [browser [camera_ip [camera_ip_mask]]] 
 rem     Control.bat (opens the page in Internet Explorer, asks for IP address and network mask of the camera)
 rem     Control.bat firefox (opens the page in firefox, asks for IP address and network mask of the camera)
@@ -24,6 +26,11 @@ if not "%3"=="" (
     set mask=%3
 )
 
+if not exist StreamViewer.jar (
+    echo StreamViewer.jar is missing. Live preview will not be available.
+    pause
+)
+
 if "%ip%" == "" goto :noip
 
 start "" "%browser%" "file://%scriptdir%Control.html?ip=%ip%"
@@ -33,4 +40,3 @@ goto :eof
 :noip
 start "" "%browser%" "file://%scriptdir%Control.html"
 start "" java -jar StreamViewer.jar
-
