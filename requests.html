@@ -754,6 +754,99 @@ intervals (in ms) between 2 succesive <br>focus actions (avoid value smaller tha
 </table>
 <br>
 </div>
+<div id="time_settings">
+<script type="text/javascript">
+    if (!String.prototype.repeat) {
+  String.prototype.repeat = function(count) {
+    'use strict';
+    if (this == null) {
+      throw new TypeError('can\'t convert ' + this + ' to object');
+    }
+    var str = '' + this;
+    count = +count;
+    if (count != count) {
+      count = 0;
+    }
+    if (count < 0) {
+      throw new RangeError('repeat count must be non-negative');
+    }
+    if (count == Infinity) {
+      throw new RangeError('repeat count must be less than infinity');
+    }
+    count = Math.floor(count);
+    if (str.length == 0 || count == 0) {
+      return '';
+    }
+    // Ensuring count is a 31-bit integer allows us to heavily optimize the
+    // main part. But anyway, most current (August 2014) browsers can't handle
+    // strings 1 << 28 chars or longer, so:
+    if (str.length * count >= 1 << 28) {
+      throw new RangeError('repeat count must not overflow maximum string size');
+    }
+    var maxCount = str.length * count;
+    count = Math.floor(Math.log(count) / Math.log(2));
+    while (count) {
+       str += str;
+       count--;
+    }
+    str += str.substring(0, maxCount - str.length);
+    return str;
+  }
+    }
+
+    if (!String.prototype.padStart) {
+    String.prototype.padStart = function padStart(targetLength,padString) {
+        targetLength = targetLength>>0; //truncate if number or convert non-number to 0;
+        padString = String((typeof padString !== 'undefined' ? padString : ' '));
+        if (this.length > targetLength) {
+            return String(this);
+        }
+        else {
+            targetLength = targetLength-this.length;
+            if (targetLength > padString.length) {
+                padString += padString.repeat(targetLength/padString.length); //append to original to ensure we are longer than needed
+            }
+            return padString.slice(0,targetLength) + String(this);
+        }
+    };
+
+      Date.prototype.stdTimezoneOffset = function() {
+        var fy=this.getFullYear();
+        if (!Date.prototype.stdTimezoneOffset.cache.hasOwnProperty(fy)) {
+
+            var maxOffset = new Date(fy, 0, 1).getTimezoneOffset();
+            var monthsTestOrder=[6,7,5,8,4,9,3,10,2,11,1];
+
+            for(var mi=0;mi<12;mi++) {
+                var offset=new Date(fy, monthsTestOrder[mi], 1).getTimezoneOffset();
+                if (offset!=maxOffset) { 
+                    maxOffset=Math.max(maxOffset,offset);
+                    break;
+                }
+            }
+            Date.prototype.stdTimezoneOffset.cache[fy]=maxOffset;
+        }
+        return Date.prototype.stdTimezoneOffset.cache[fy];
+    };
+
+    Date.prototype.stdTimezoneOffset.cache={};
+
+    Date.prototype.isDST = function() {
+        return this.getTimezoneOffset() < this.stdTimezoneOffset(); 
+    };
+}
+</script>
+<br>
+<b>Time Settings</b>
+<br>
+<table>
+<TR>
+<TD><input leftmargin="100" type="button" name="init" value="Sync camera time with computer" onclick="d=new Date(); sign = (d.getTimezoneOffset() > 0 ? '-' : '+'); off = (d.isDST ? d.stdTimezoneOffset() : d.getTimezoneOffset()); offset = Math.round(Math.abs(off / 60 * 100)).toString().padStart(4, '0'); date = '' + d.getUTCFullYear() + (d.getUTCMonth()+1).toString().padStart(2, '0') + d.getDate().toString().padStart(2, '0') + d.getUTCHours().toString().padStart(2, '0') + d.getUTCMinutes().toString().padStart(2, '0') + d.getUTCSeconds().toString().padStart(2, '0') + sign + offset; window.open('http://' + window.cameraIp + '/cam.cgi?mode=setsetting&type=clock&value=' + date, 'results')" style="background-color:#FFFFFF" style="color:white; font-weight:bold"> 
+</TD></TR>
+<tr><td><form method="get" action="http://192.168.0.1/cam.cgi" target="results"><input type="text" name="value" width="35" placeholder="20190420125500+0100" /><input type="hidden" name="mode" value="setsetting" /><input type="hidden" name="type" value="clock" /><input type="submit" value="Set time" /></form></td></tr>
+</table>
+<br>
+</div>
 </div>
 </div>
 </body>

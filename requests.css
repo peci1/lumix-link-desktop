@@ -159,3 +159,6 @@ table {
     font-weight: bold;
     font-family: Arial, sans-serif;
 }
+#time_settings {
+    clear: both;
+}
