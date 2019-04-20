@@ -1,3 +1,7 @@
+# 3.2.0 (2019-04-20) #
+
+- Added options to set camera time.
+
 # 3.1.0 (2018-01-11) #
 
 - Added button to stop recording.
