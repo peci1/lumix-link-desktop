@@ -162,3 +162,9 @@ table {
 #time_settings {
     clear: both;
 }
+#results {
+    clear: both;
+    width: 100%;
+    background-color: white;
+    text-align: left;
+}
