@@ -14,7 +14,10 @@
         for (i = 0; i < forms.length; i++) {
             forms[i].action = 'http://' + window.cameraIp + '/cam.cgi';
         }
-	keepAlive();
+
+        window.open('http://' + window.cameraIp + '/cam.cgi?mode=accctrl&type=req_acc&value=0&value2=Lumix%20Link%20Desktop', 'hidden');
+
+	setTimeout(keepAlive, 2000);
     }
 </script>
 </head>
