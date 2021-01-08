@@ -10,6 +10,10 @@ Do not download the application from the forum, download [it here on Github](htt
 
 There are a few differences in this version to the one posted on the forum: both the web and the Java applications ask you for the camera's IP address, so that different connection modes are supported (e.g. the camera connected to your home wifi). Check the [changelog](https://github.com/peci1/lumix-link-desktop/blob/master/CHANGELOG.md) for more.
 
+*Important:* If you connect to the camera by making a hotspot on the camera, there is a security mechanism. When you first connect the app to the camera, the camera will ask you if you want to connect "Lumix Link Desktop". You have to agree here.
+
+If you would see errors like _err-unsuitable-app_ on the results window, it means these security restrictions do not let the app to connect. You can try fixing that by opening `http://CAMERA_IP/cam.cgi?mode=accctrl&type=req_acc&value=0&value2=Vexia%20Fcs` in your browser _before_ starting the app (substituting `CAMERA_IP` by the IP address of your camera, which in case of connecting to hotspot, will probably be 192.168.54.1).
+
 ## Supported models ##
 
 The **basic parts of this application should work with all Lumix cameras that can be used with the mobile app**. 

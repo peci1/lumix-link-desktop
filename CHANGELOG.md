@@ -1,3 +1,8 @@
+# 3.3.0 (2020-04-03) #
+
+- Compatibility with Firefox 68+.
+- Fixed _err-unsuitable-app_ error in case the app connects to the camera's hotspot.
+
 # 3.2.0 (2019-04-20) #
 
 - Added options to set camera time.
