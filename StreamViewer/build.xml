@@ -11,7 +11,7 @@
     
     <target name="-post-jar">
         <copy todir=".." file="${dist.dir}/StreamViewer.jar" overwrite="true" />
-        <zip destfile="${dist.dir}/lumix-link.zip" basedir=".." includes="*.html, *.js, *.css, *.bat, *.jar, README.md, LICENSE.md" />
+        <zip destfile="${dist.dir}/lumix-link.zip" basedir=".." includes="*.html, *.js, *.css, *.bat, *.sh, *.jar, README.md, LICENSE.md" />
     </target>
 
 </project>
